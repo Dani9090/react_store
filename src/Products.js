@@ -1,12 +1,11 @@
 import React, {useState} from "react";
-import "./App.css";
-import Footer from "./Footer";
-import Header from "./Header";
 import Spinner from "./Spinner";
 import useFetch from "./services/useFetch";
+import {useParms} from 'react-router-dom'
 
-export default function App() {
+export default function Products() {
   const [size, setSize]=useState('');
+const {category} =useParms();
 
 const {data:products, loading, error} = useFetch("products?category=shoes")
 
@@ -26,10 +25,10 @@ const filterProducts = size ? products.filter((p)=> p.skus.find((s)=> s.size ===
 if (error) throw error;
 if(loading) return <Spinner />
   return (
-    <>
-      <div className="content">
-        <Header />
-        <main>
+    <div>
+
+
+
           <section id="filters">
             <label htmlFor="size">Filter by Size:</label>{" "}
             <select id="size" value={size} onChange={(e) => setSize(e.target.value)}>
@@ -41,9 +40,9 @@ if(loading) return <Spinner />
             {size ? (<h2>Found {filterProducts.length} items</h2>) : null}
           </section>
           <section id="products">{filterProducts.map(renderProduct)}</section>
-        </main>
-      </div>
-      <Footer />
-    </>
+
+
+
+    </div>
   );
 }
