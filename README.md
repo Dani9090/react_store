@@ -27,4 +27,3 @@ I made the following enhancements:
 1. Deleted from src: index.css, logo.svg, serviceWorker.js, App.test.js
 1. Deleted from public: logo files, manifest.json, robots.txt
 1. Customized App.js and renamed to App.jsx
-"# react_store" 
